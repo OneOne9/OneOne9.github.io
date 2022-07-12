@@ -13,7 +13,7 @@ t = setTimeout(time, 1000);
 
 function time() {
     clearTimeout(t);
-    date = new Date();
+    let date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
@@ -27,14 +27,14 @@ function time() {
     var hour = date.getHours();
     var min = date.getMinutes();
     var sec = date.getSeconds();
-    if (h < 10) {
-        h = "0" + h;
+    if (hour < 10) {
+        hour = "0" + hour;
     }
-    if (m < 10) {
-        m = "0" + m;
+    if (min < 10) {
+        min = "0" + min;
     }
-    if (s < 10) {
-        s = "0" + s;
+    if (sec < 10) {
+        sec = "0" + sec;
     }
     $("#time").html(year + "&nbsp;年&nbsp;" + month + "&nbsp;月&nbsp;" + day + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekdays[weekday] + "</span><br>" + "<span class='time-text'>" + hour + ":" + min + ":" + sec + "</span>");
     t = setTimeout(time, 1000);
