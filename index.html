@@ -16,21 +16,21 @@
         <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" /><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
-        <div>
-            <button id ="time" type="button" onclick="document.getElementById('demo').innerHTML = Date()">点击我来显示日期和时间</button>
-            <p id="demo"></p>
+        <div class="col times">
+            <div class="time cards" id="upWeather">
+                <div class="timeshow" id="time">
+                    2000&nbsp;年&nbsp;0&nbsp;月&nbsp;00&nbsp;日&nbsp;
+                    <span class="weekday">星期一</span><br><span class="time-text">00:00:00</span>
+                </div>
+                <div class="weather">
+                    <span id="city_text">天气</span>&nbsp;
+                    <span id="wea_text">加载失败</span>&nbsp;
+                    <span id="tem_text">*</span>°C&nbsp;
+                    <span id="win_text"></span>`
+                    <span id="win_speed">*</span>级
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="./js/main.js"></script>
-        <!-- <div id="g-pointer-1"></div>
-        <div id="g-pointer-2"></div>
-        <div class="bg-all">
-            <img id="bg" onerror="this.classList.add('error');"></img>
-            <div class="cover"></div>
-        </div>
-        <script>$('#bg').attr('src', './img/background1.webp')</script>
-        <div>
-            <h1> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb </h1>
-        </div> -->
     </body>
 </html>
