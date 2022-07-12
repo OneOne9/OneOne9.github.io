@@ -17,11 +17,6 @@ function time() {
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
-    iziToast.show({
-        timeout: 1000,
-        icon: "fa-solid fa-circle-exclamation",
-        message: year + " " + month + " " + day
-    });
     var weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
     var weekday = date.getDay();
     var hour = date.getHours();
