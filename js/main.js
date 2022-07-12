@@ -34,17 +34,11 @@ body.addEventListener('mousemove', (e) => {
     });
 });
 
-
-document.oncontextmenu = function () {
-    iziToast.show({
-        timeout: 2000,
-        icon: "fa-solid fa-circle-exclamation",
-        message: '为了浏览体验，本站禁用右键'
-    });
-    return false;
+//移动端去除鼠标样式
+switch (true) {
+    case navigator.userAgent.indexOf('Mobile') > 0:
+        $('#g-pointer-2').css("display", "none");
 }
-
-//欢迎
 
 now = new Date();
 hour = now.getHours();
@@ -67,12 +61,44 @@ if (hour < 6) {
     hello = "夜深了";
 }
 
-iziToast.show({
-    timeout: 2500,
-    icon: false,
-    title: hello,
-    message: '欢迎来到我的主页'
-});
+window.addEventListener('load', function () {
+
+    setTimeout(loaded, 1000);
+
+    const font = new FontFace(
+        "MiSans",
+        "url(" + "./font/MiSans-Regular.woff2" + ")"
+    );
+    document.fonts.add(font);
+
+}, false)
+
+function loaded() {
+
+    //载入动画
+    $('#loading-box').attr('class', 'loaded');
+    $('#bg').css("cssText", "transform: scale(1);filter: blur(0px);transition: ease 1.5s;");
+    $('.cover').css("cssText", "opacity: 1;transition: ease 1.5s;");
+    $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
+
+    // 欢迎
+    iziToast.show({
+        timeout: 2500,
+        icon: false,
+        title: hello,
+        message: '欢迎来到我的主页'
+    });
+
+}
+
+document.oncontextmenu = function () {
+    iziToast.show({
+        timeout: 2000,
+        icon: "fa-solid fa-circle-exclamation",
+        message: '为了浏览体验，本站禁用右键'
+    });
+    return false;
+}
 
 /*
 //获取天气
