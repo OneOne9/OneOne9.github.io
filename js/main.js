@@ -2,7 +2,7 @@ document.oncontextmenu = function () {
     iziToast.show({
         timeout: 2000,
         icon: "fa-solid fa-circle-exclamation",
-        message: '为了浏览体验，本站禁用右键1'
+        message: '为了浏览体验，本站禁用右键'
     });
     return false;
 }
