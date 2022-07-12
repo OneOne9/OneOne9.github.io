@@ -17,7 +17,7 @@ iziToast.settings({
 });
 
 /* 鼠标样式 */
-/*
+
 const body = document.querySelector("body");
 const element = document.getElementById("g-pointer-1");
 const element2 = document.getElementById("g-pointer-2");
@@ -33,7 +33,8 @@ body.addEventListener('mousemove', (e) => {
         setPosition(e.clientX, e.clientY);
     });
 });
-*/
+
+
 document.oncontextmenu = function () {
     iziToast.show({
         timeout: 2000,
