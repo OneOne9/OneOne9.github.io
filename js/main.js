@@ -2,14 +2,13 @@ document.oncontextmenu = function () {
     iziToast.show({
         timeout: 2000,
         icon: "fa-solid fa-circle-exclamation",
-        message: '为了浏览体验，本站禁用右键'
+        message: '为了浏览体验，本站禁用右键1'
     });
     return false;
 }
-
 //获取时间
 var t = null;
-t = setTimeout(time, 1000);
+t = setTimeout(time(), 1000);
 
 function time() {
     clearTimeout(t);
@@ -32,5 +31,5 @@ function time() {
         sec = "0" + sec;
     }
     $("#time").html(year + "&nbsp;年&nbsp;" + month + "&nbsp;月&nbsp;" + day + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekdays[weekday] + "</span><br>" + "<span class='time-text'>" + hour + ":" + min + ":" + sec + "</span>");
-    t = setTimeout(time, 1000);
+    t = setTimeout(time(), 1000);
 }
