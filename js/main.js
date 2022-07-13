@@ -78,6 +78,25 @@ window.addEventListener('load', function () {
 
 }, false)
 
+//火狐浏览器独立样式
+if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
+    link.href = './css/firefox.css';
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    head.appendChild(link);
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            iziToast.show({
+                timeout: 8000,
+                icon: "fa-solid fa-circle-exclamation",
+                message: '您正在使用火狐浏览器，部分功能可能不支持'
+            });
+        }, 3800);
+    }, false)
+}
+
 function loaded() {
 
     //载入动画
@@ -163,12 +182,13 @@ function getWeather() {
 
 getWeather();
 
+var wea = 0;
 $('#upWeather').click(function () {
-    if (times == 0) {
-        times = 1;
+    if (wea == 0) {
+        wea = 1;
         var index = setInterval(function () {
-            times--;
-            if (times == 0) {
+            wea--;
+            if (wea == 0) {
                 clearInterval(index);
             }
         }, 60000);
@@ -187,31 +207,32 @@ $('#upWeather').click(function () {
     }
 });
 
+
 //获取时间
 var t = null;
 t = setTimeout(time, 1000);
 
 function time() {
     clearTimeout(t);
-    let date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    var weekday = date.getDay();
-    var hour = date.getHours();
-    var min = date.getMinutes();
-    var sec = date.getSeconds();
-    if (hour < 10) {
-        hour = "0" + hour;
+    dt = new Date();
+    var y = dt.getYear() + 1900;
+    var mm = dt.getMonth() + 1;
+    var d = dt.getDate();
+    var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    var day = dt.getDay();
+    var h = dt.getHours();
+    var m = dt.getMinutes();
+    var s = dt.getSeconds();
+    if (h < 10) {
+        h = "0" + h;
     }
-    if (min < 10) {
-        min = "0" + min;
+    if (m < 10) {
+        m = "0" + m;
     }
-    if (sec < 10) {
-        sec = "0" + sec;
+    if (s < 10) {
+        s = "0" + s;
     }
-    $("#time").html(year + "&nbsp;年&nbsp;" + month + "&nbsp;月&nbsp;" + day + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekdays[weekday] + "</span><br>" + "<span class='time-text'>" + hour + ":" + min + ":" + sec + "</span>");
+    $("#time").html(y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
     t = setTimeout(time, 1000);
 }
 
@@ -251,6 +272,7 @@ $("#email").mouseover(function () {
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
 });
+/*
 $("#telegram").mouseover(function () {
     $("#link-text").html("你懂的 ~");
 }).mouseout(function () {
@@ -260,7 +282,7 @@ $("#twitter").mouseover(function () {
     $("#link-text").html("你懂的 ~");
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
-});
+});*/
 
 //自动变灰
 var myDate = new Date;

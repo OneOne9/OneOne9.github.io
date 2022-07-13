@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
+    <!-- 基础信息 -->
         <meta charset="utf-8">
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="force-rendering" content="webkit" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#424242"/>
+        <meta name="description" content="一个默默无闻的主页">
+        <meta name="keywords" content="万,个人主页">
+        <meta name="author" content="万">
         <title>OneOne9 · 主页</title>
         <!-- jQuery -->
         <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" type="text/css" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/bootstrap/5.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/mobile.css">
+        <link rel="stylesheet" type="text/css" href="./css/loading.css">
+        <link rel="stylesheet" type="text/css" href="./css/animation.css">
+        <link rel="icon" href="./favicon.ico">
+        <link rel="apple-touch-icon" href="./img/icon/favicon.ico">
         <!-- Izitoast -->
         <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/css/iziToast.min.css">
         <script type="text/javascript" src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/js/iziToast.min.js"></script>
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <!-- Aplayer -->
-        <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" /><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/mobile.css">
-        <link rel="stylesheet" type="text/css" href="./css/loading.css">
-        <link rel="stylesheet" type="text/css" href="./css/animation.css">
-        <link rel="icon" href="./favicon.ico">
+        <!-- IE Out -->
+        <script>
+            if ( /*@cc_on!@*/ false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href =
+                "/upgrade-your-browser/index.html?referrer=" + encodeURIComponent(window.location.href);
+        </script>
+        <!-- PWA -->
+        <link rel="manifest" href="/manifest.json">
+        <!-- 51.LA 统计 -->
+        <script src="./js/51LA.js"></script>
     </head>
     <body>
         <!--加载动画-->
@@ -56,8 +80,8 @@
                                 <div class="main-img">
                                     <img id="logo-img" src="./img/icon/logo.png" alt="img">
                                     <div class="img-title">
-                                        <span class="img-title-big" id="logo-text-1">onewan</span>
-                                        <span class="img-text" id="logo-text-2">.top</span>
+                                        <span class="img-title-big" id="logo-text-1">oneonenine</span>
+                                        <!--span class="img-text" id="logo-text-2">.top</span-->
                                     </div>
                                 </div>
                                 <!--介绍信息-->
@@ -82,13 +106,13 @@
                                     <a href="1191323211@qq.com" class="link" id="email">
                                         <i class="fa-solid fa-envelope"></i>
                                     </a>
-                                    <!--a href="https://t.me/bottom_user" class="link" id="telegram" target="_blank">
+                                    <a href="https://t.me/bottom_user" class="link" id="telegram" target="_blank">
                                         <i class="fa-brands fa-telegram"></i>
                                     </a>
                                     <a href="https://twitter.com/iimmsyy" class="link" id="twitter" target="_blank">
                                         <i class="fa-brands fa-twitter"></i>
                                     </a>
-                                    <a id="link-text">通过这里联系我</a-->
+                                    <a id="link-text">通过这里联系我</a>
                                 </div>
                             </div>
                         </div>
@@ -96,11 +120,11 @@
                         <div class="logo cards" style="display: none" id="changemore">
                             <a class="logo-text" id="logo-text-small">onewan.top</a>
                         </div>
-                        <div class="col-right">
+                        <div class="col right">
                             <div class="main-right">
                                 <!--功能区-->
                                 <div class="row rightone" id="rightone">
-                                    <div class="col-hitokotos">
+                                    <div class="col hitokotos">
                                         <!--一言-->
                                         <div class="hitokoto cards" id="hitokoto">
                                             <!--切换音乐-->
@@ -144,9 +168,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-times">
+                                    <div class="col times">
                                         <!--时间-->
-                                        <div class="time-cards" id="upWeather">
+                                        <div class="time cards" id="upWeather">
                                             <div class="timeshow" id="time">
                                                 2000&nbsp;年&nbsp;0&nbsp;月&nbsp;00&nbsp;日&nbsp;
                                                 <span class="weekday">星期一</span><br><span class="time-text">00:00:00</span>
@@ -468,9 +492,9 @@
                 <div class="power">Copyright&nbsp;&copy;&nbsp;<span id="power-year">2022</span>
                     <script>
                         document.write(' - ' + (new Date()).getFullYear())
-                    </script>&nbsp;<a href="https://imsyy.top" id="power-text">万</a>&nbsp;&amp;&nbsp;
+                    </script>&nbsp;<a href="https://onewan.top" id="power-text">万</a>&nbsp;&amp;&nbsp;
                     <!-- 以下信息请不要修改哦 -->
-                    Made&nbsp;by&nbsp;<a href="https://github.com/imsyy/home" target="_blank">onewan</a>
+                    Made&nbsp;by&nbsp;<a href="https://gitee.com/OneOneNineCodeHome/my-website" target="_blank">onewan</a>
                 </div>
                 <!-- 歌词显示 -->
                 <div id="lrc"></div>
