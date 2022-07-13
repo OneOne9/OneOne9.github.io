@@ -71,6 +71,11 @@ window.addEventListener('load', function () {
     );
     document.fonts.add(font);
 
+        //延迟加载音乐播放器
+        var element = document.createElement("script");
+        element.src = "./js/music.js";
+        document.body.appendChild(element);
+
 }, false)
 
 function loaded() {
@@ -81,7 +86,7 @@ function loaded() {
     $('.cover').css("cssText", "opacity: 1;transition: ease 1.5s;");
     $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
 
-    // 欢迎
+    //用户欢迎
     iziToast.show({
         timeout: 2500,
         icon: false,
@@ -91,16 +96,41 @@ function loaded() {
 
 }
 
-document.oncontextmenu = function () {
-    iziToast.show({
-        timeout: 2000,
-        icon: "fa-solid fa-circle-exclamation",
-        message: '为了浏览体验，本站禁用右键'
-    });
-    return false;
-}
+//获取一言
+fetch('https://v1.hitokoto.cn?max_length=24')
+    .then(response => response.json())
+    .then(data => {
+        $('#hitokoto_text').html(data.hitokoto)
+        $('#from_text').html(data.from)
+    })
+    .catch(console.error)
 
-/*
+var times = 0;
+$('#hitokoto').click(function () {
+    if (times == 0) {
+        times = 1;
+        var index = setInterval(function () {
+            times--;
+            if (times == 0) {
+                clearInterval(index);
+            }
+        }, 1000);
+        fetch('https://v1.hitokoto.cn?max_length=24')
+            .then(response => response.json())
+            .then(data => {
+                $('#hitokoto_text').html(data.hitokoto)
+                $('#from_text').html(data.from)
+            })
+            .catch(console.error)
+    } else {
+        iziToast.show({
+            timeout: 1000,
+            icon: "fa-solid fa-circle-exclamation",
+            message: '你点太快了吧'
+        });
+    }
+});
+
 //获取天气
 const add_id = "rlwppslhlxgyrtqp"; // app_id ROLL API
 const app_secret = "cFBoWU9zQlNERUoxd2QxamJpVkZFZz09"; // app_secret ROLL API
@@ -132,6 +162,31 @@ function getWeather() {
 }
 
 getWeather();
+
+$('#upWeather').click(function () {
+    if (times == 0) {
+        times = 1;
+        var index = setInterval(function () {
+            times--;
+            if (times == 0) {
+                clearInterval(index);
+            }
+        }, 60000);
+        getWeather();
+        iziToast.show({
+            timeout: 2000,
+            icon: "fa-solid fa-cloud-sun",
+            message: '实时天气已更新'
+        });
+    } else {
+        iziToast.show({
+            timeout: 1000,
+            icon: "fa-solid fa-circle-exclamation",
+            message: '请稍后再更新哦'
+        });
+    }
+});
+
 //获取时间
 var t = null;
 t = setTimeout(time, 1000);
@@ -159,4 +214,171 @@ function time() {
     $("#time").html(year + "&nbsp;年&nbsp;" + month + "&nbsp;月&nbsp;" + day + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekdays[weekday] + "</span><br>" + "<span class='time-text'>" + hour + ":" + min + ":" + sec + "</span>");
     t = setTimeout(time, 1000);
 }
-*/
+
+//链接提示文字
+$("#social").mouseover(function () {
+    $("#social").css({
+        "background": "rgb(0 0 0 / 25%)",
+        'border-radius': '6px',
+        "backdrop-filter": "blur(5px)"
+    });
+    $("#link-text").css({
+        "display": "block",
+    });
+}).mouseout(function () {
+    $("#social").css({
+        "background": "none",
+        "border-radius": "6px",
+        "backdrop-filter": "none"
+    });
+    $("#link-text").css({
+        "display": "none"
+    });
+});
+
+$("#github").mouseover(function () {
+    $("#link-text").html("去 Github 看看");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+$("#qq").mouseover(function () {
+    $("#link-text").html("有什么事吗");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+$("#email").mouseover(function () {
+    $("#link-text").html("来封 Email");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+$("#telegram").mouseover(function () {
+    $("#link-text").html("你懂的 ~");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+$("#twitter").mouseover(function () {
+    $("#link-text").html("你懂的 ~");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+
+//自动变灰
+var myDate = new Date;
+var mon = myDate.getMonth() + 1;
+var date = myDate.getDate();
+var days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
+for (var day of days) {
+    var d = day.split('.');
+    if (mon == d[0] && date == d[1]) {
+        document.write(
+            '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
+        )
+        $("#change").html("Silence&nbsp;in&nbsp;silence");
+        $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
+        window.addEventListener('load', function () {
+            iziToast.show({
+                timeout: 14000,
+                icon: "fa-solid fa-clock",
+                message: '今天是中国国家纪念日'
+            });
+        }, false);
+    }
+}
+
+//更多页面切换
+var shoemore = false;
+$('#switchmore').on('click', function () {
+    shoemore = !shoemore;
+    if (shoemore && $(document).width() >= 990) {
+        $('#container').attr('class', 'container mores');
+        $("#change").html("Oops&nbsp;!");
+        $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
+    } else {
+        $('#container').attr('class', 'container');
+        $("#change").html("Hello&nbsp;World&nbsp;!");
+        $("#change1").html("一个建立于 21 世纪的小站，存活于互联网的边缘");
+    }
+});
+
+//更多页面关闭按钮
+$('#close').on('click', function () {
+    $('#switchmore').click();
+});
+
+//移动端菜单栏切换
+var switchmenu = false;
+$('#switchmenu').on('click', function () {
+    switchmenu = !switchmenu;
+    if (switchmenu) {
+        $('#row').attr('class', 'row menus');
+        $("#menu").html("<i class='fa-solid fa-xmark'></i>");
+    } else {
+        $('#row').attr('class', 'row');
+        $("#menu").html("<i class='fa-solid fa-bars'></i>");
+    }
+});
+
+//更多弹窗页面
+$('#openmore').on('click', function () {
+    $('#box').css("display", "block");
+    $('#row').css("display", "none");
+    $('#more').css("cssText", "display:none !important");
+});
+$('#closemore').on('click', function () {
+    $('#box').css("display", "none");
+    $('#row').css("display", "flex");
+    $('#more').css("display", "flex");
+});
+
+//监听网页宽度
+window.addEventListener('load', function () {
+    window.addEventListener('resize', function () {
+        //关闭移动端样式
+        if (window.innerWidth >= 600) {
+            $('#row').attr('class', 'row');
+            $("#menu").html("<i class='fa-solid fa-bars'></i>");
+            //移除移动端切换功能区
+            $('#rightone').attr('class', 'row rightone');
+        }
+
+        if (window.innerWidth <= 990) {
+            //移动端隐藏更多页面
+            $('#container').attr('class', 'container');
+            $("#change").html("Hello&nbsp;World&nbsp;!");
+            $("#change1").html("一个建立于 21 世纪的小站，存活于互联网的边缘");
+
+            //移动端隐藏弹窗页面
+            $('#box').css("display", "none");
+            $('#row').css("display", "flex");
+            $('#more').css("display", "flex");
+        }
+    })
+})
+
+//移动端切换功能区
+var changemore = false;
+$('#changemore').on('click', function () {
+    changemore = !changemore;
+    if (changemore) {
+        $('#rightone').attr('class', 'row menus mobile');
+    } else {
+        $('#rightone').attr('class', 'row menus');
+    }
+});
+
+//更多页面显示关闭按钮
+$("#more").hover(function () {
+    $('#close').css("display", "block");
+}, function () {
+    $('#close').css("display", "none");
+})
+
+//屏蔽右键
+document.oncontextmenu = function () {
+    iziToast.show({
+        timeout: 2000,
+        icon: "fa-solid fa-circle-exclamation",
+        message: '为了浏览体验，本站禁用右键'
+    });
+    return false;
+}
