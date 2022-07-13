@@ -9,14 +9,6 @@ function setBgImg(bg_img) {
     return false;
 };
 
-var bg_img_preinstall = {
-    "type": "默认背景", // 1:默认背景 2:每日一图 3:随机风景 4:随机动漫
-};
-
-var bg_img_map = {
-    "默认背景": "1", "每日一图": "2", "随机风景": "3", "随机动漫": "4"
-};
-
 // 获取背景图片 Cookies
 function getBgImg() {
     var bg_img_local = Cookies.get('bg_img');
@@ -28,9 +20,14 @@ function getBgImg() {
     }
 };
 
+var bg_img_preinstall = {
+    "type": "1", // 1:默认背景 2:每日一图 3:随机风景 4:随机动漫
+};
+
+
 function setBgImgInit() {
     var bg_img = getBgImg();
-    //$("input[name='wallpaper-type'][value=" + bg_img["type"] + "]").click();
+    $("input[name='wallpaper-type'][value=" + bg_img["type"] + "]").click();
     switch (bg_img["type"]) {
         case "1":
             var pictures = new Array();
