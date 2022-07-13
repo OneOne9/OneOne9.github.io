@@ -4,10 +4,11 @@
     <!-- 基础信息 -->
         <meta charset="utf-8">
         <meta http-equiv="Access-Control-Allow-Origin" content="*">
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
         <meta name="renderer" content="webkit" />
         <meta name="referrer" content="no-referrer" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="force-rendering" content="webkit" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#424242"/>
         <meta name="description" content="一个默默无闻的主页">
@@ -330,41 +331,91 @@
                         <!--网站链接-->
                         <div class="row">
                             <div class="col">
-                                <a href="https://status.imsyy.top/" target="_blank">
+                                <!-- <a href="https://status.imsyy.top/" target="_blank"> -->
                                     <div class="link-card cards">
                                         <span class="link-name">站点监测</span>
                                     </div>
-                                </a>
+                                    <script>
+                                        $('#link-name-3').on('click', function () {
+                                            iziToast.show({
+                                                timeout: 2000,
+                                                icon: "fa-solid fa-circle-exclamation",
+                                                message: '暂无站点监测'
+                                            });
+                                            return false;
+                                        });
+                                    </script>
+                                <!-- </a> -->
                             </div>
                             <div class="col 2">
-                                <a href="https://player.imsyy.top/" target="_blank">
+                                <!-- <a href="https://player.imsyy.top/" target="_blank"> -->
                                     <div class="link-card cards">
                                         <span class="link-name">播放器</span>
                                     </div>
-                                </a>
+                                    <script>
+                                        $('#link-name-3').on('click', function () {
+                                            iziToast.show({
+                                                timeout: 2000,
+                                                icon: "fa-solid fa-circle-exclamation",
+                                                message: '暂无站点监测'
+                                            });
+                                            return false;
+                                        });
+                                    </script>
+                                <!-- </a> -->
                             </div>
                             <div class="col">
-                                <a href="https://write.imsyy.top/" target="_blank">
+                                <!-- <a href="https://write.imsyy.top/" target="_blank"> -->
                                     <div class="link-card cards">
                                         <span class="link-name">编辑器</span>
                                     </div>
-                                </a>
+                                    <script>
+                                        $('#link-name-3').on('click', function () {
+                                            iziToast.show({
+                                                timeout: 2000,
+                                                icon: "fa-solid fa-circle-exclamation",
+                                                message: '暂无编辑器'
+                                            });
+                                            return false;
+                                        });
+                                    </script>
+                                <!-- </a> -->
                             </div>
                         </div>
                         <div class="row" style="margin-top: 1.5rem;">
                             <div class="col">
-                                <a href="https://photo.imsyy.top/" target="_blank">
+                                <!-- <a href="https://photo.imsyy.top/" target="_blank"> -->
                                     <div class="link-card cards">
                                         <span class="link-name">时光相册</span>
                                     </div>
-                                </a>
+                                    <script>
+                                        $('#link-name-3').on('click', function () {
+                                            iziToast.show({
+                                                timeout: 2000,
+                                                icon: "fa-solid fa-circle-exclamation",
+                                                message: '暂无时光相册'
+                                            });
+                                            return false;
+                                        });
+                                    </script>
+                                <!-- </a> -->
                             </div>
                             <div class="col 2">
-                                <a href="https://share.imsyy.top/" target="_blank">
+                                <!-- <a href="https://share.imsyy.top/" target="_blank"> -->
                                     <div class="link-card cards">
                                         <span class="link-name">文件库</span>
                                     </div>
-                                </a>
+                                    <script>
+                                        $('#link-name-3').on('click', function () {
+                                            iziToast.show({
+                                                timeout: 2000,
+                                                icon: "fa-solid fa-circle-exclamation",
+                                                message: '暂无文件库'
+                                            });
+                                            return false;
+                                        });
+                                    </script>
+                                <!-- </a> -->
                             </div>
                             <div class="col">
                                 <a id="openmore">
@@ -385,12 +436,12 @@
                             <!--左侧内容-->
                             <div class="box-left">
                                 <div class="img-title">
-                                    <span class="img-title-big" id="logo-title-other">imsyy</span>
-                                    <span class="img-text" id="logo-title-other-small">.top</span><br />
-                                    <span class="img-text">&nbsp;v&nbsp;3.3</span>
-                                    <a href="https://github.com/imsyy/home" target="_blank">
+                                    <span class="img-title-big" id="logo-title-other">oneonenine</span>
+                                    <!-- <span class="img-text" id="logo-title-other-small">.top</span><br /> -->
+                                    <!-- <span class="img-text">&nbsp;v&nbsp;3.3</span> -->
+                                    <!-- <a href="https://github.com/imsyy/home" target="_blank"> -->
                                         <i class="fa-brands fa-github"></i>
-                                    </a>
+                                    <!-- </a> -->
                                 </div>
                                 <!--更多内容-->
                                 <div class="accordion" id="accordion">
